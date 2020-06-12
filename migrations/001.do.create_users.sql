@@ -1,7 +1,7 @@
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     email TEXT NOT NULL UNIQUE,
-    password NOT NULL,
+    password TEXT NOT NULL,
     city TEXT,
     dog_name TEXT,
     breed TEXT,
@@ -17,5 +17,4 @@ CREATE TABLE users (
     tricks_complete BOOLEAN,
     feeding_complete BOOLEAN,
     housetrain_complete BOOLEAN
-
 )
