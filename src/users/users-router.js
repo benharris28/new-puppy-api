@@ -61,7 +61,7 @@ usersRouter
         console.log(user)
         res
             .status(201)
-            .location(path.posix.join(req.originalUrl, `/${user.id}`))
+            .location(path.posix.join(req.originalUrl))
             .json(UsersService.serializeUser(user))
         }) 
     })
@@ -73,8 +73,8 @@ usersRouter
 usersRouter
 .route('/:id')
 .patch(jsonBodyParser, (req, res, next) => {
-    const { product_complete, food_complete, housetrain_complete, feeding_complete, tricks_complete, pickup_complete, prephome_complete } = req.body;
-    const userUpdate = { product_complete, food_complete, housetrain_complete, feeding_complete, tricks_complete, pickup_complete, prephome_complete }
+    const { product_complete, food_complete, housetrain_complete, feeding_complete, tricks_complete, pickup_complete, prephome_complete, dog_name, breed, home_date, dog_birthday } = req.body;
+    const userUpdate = { product_complete, food_complete, housetrain_complete, feeding_complete, tricks_complete, pickup_complete, prephome_complete, dog_name, breed, home_date, dog_birthday  }
     
     UsersService.markComplete(
         req.app.get('db'),
