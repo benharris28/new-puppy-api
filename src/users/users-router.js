@@ -72,9 +72,22 @@ usersRouter
 
 usersRouter
 .route('/:id')
+.get((req, res, next) => {
+    const { id } = req.params;
+    
+    UsersService.getById(
+        req.app.get('db'),
+        id
+    )
+    .then(user => {
+        res.json(user)
+    })
+    .catch(next)
+})
 .patch(jsonBodyParser, (req, res, next) => {
     const { product_complete, food_complete, housetrain_complete, feeding_complete, tricks_complete, pickup_complete, prephome_complete, dog_name, breed, home_date, dog_birthday } = req.body;
     const userUpdate = { product_complete, food_complete, housetrain_complete, feeding_complete, tricks_complete, pickup_complete, prephome_complete, dog_name, breed, home_date, dog_birthday  }
+    console.log(req.body)
     
     UsersService.markComplete(
         req.app.get('db'),
@@ -82,6 +95,7 @@ usersRouter
         userUpdate
     )
     .then(numRowsAffected => {
+        
         res.status(204).end()
     })
     .catch(next)
