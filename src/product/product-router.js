@@ -50,5 +50,26 @@ productRouter
         .catch(next) 
 })
 
+productRouter
+.route('/:id')
+.patch(jsonBodyParser, (req, res, next) => {
+    const { active } = req.body;
+    const productUpdate = { active }
+    console.log(req.body)
+    
+    ProductService.updateProduct(
+        req.app.get('db'),
+        req.params.id,
+        productUpdate
+    )
+    .then(numRowsAffected => {
+        
+        res.status(204).end()
+    })
+    .catch(next)
+})
+
+
+
 
 module.exports = productRouter;

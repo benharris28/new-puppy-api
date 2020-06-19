@@ -15,6 +15,12 @@ const ProductService = {
             .returning('*')
             .then(([product]) => product)
     },
+    updateProduct(db, id, productUpdate) {
+        return db('products')
+            .where({ id })
+            .update(productUpdate)
+
+    },
 }
 
 module.exports = ProductService
