@@ -7,7 +7,14 @@ const FoodService = {
             .select('*')
 
          
-    }
+    },
+    insertFood(db, newFood) {
+        return db
+            .insert(newFood)
+            .into('food')
+            .returning('*')
+            .then(([food]) => food)
+    },
 }
 
 module.exports = FoodService

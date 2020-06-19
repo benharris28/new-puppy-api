@@ -7,7 +7,14 @@ const ProductService = {
             .select('*')
             .where('active', active)
          
-    }
+    },
+    insertProduct(db, newProduct) {
+        return db
+            .insert(newProduct)
+            .into('products')
+            .returning('*')
+            .then(([product]) => product)
+    },
 }
 
 module.exports = ProductService
