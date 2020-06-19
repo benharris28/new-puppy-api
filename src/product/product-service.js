@@ -15,9 +15,9 @@ const ProductService = {
             .returning('*')
             .then(([product]) => product)
     },
-    updateProduct(db, id, productUpdate) {
+    updateProduct(db, product_id, productUpdate) {
         return db('products')
-            .where({ id })
+            .where({ product_id })
             .update(productUpdate)
 
     },

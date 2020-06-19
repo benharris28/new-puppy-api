@@ -51,7 +51,7 @@ productRouter
 })
 
 productRouter
-.route('/:id')
+.route('/:product_id')
 .patch(jsonBodyParser, (req, res, next) => {
     const { active } = req.body;
     const productUpdate = { active }
@@ -59,7 +59,7 @@ productRouter
     
     ProductService.updateProduct(
         req.app.get('db'),
-        req.params.id,
+        req.params.product_id,
         productUpdate
     )
     .then(numRowsAffected => {
