@@ -4,7 +4,7 @@ const MapService = {
     async getMarkers(db, lat, lng) {
         
         let query = await db.raw( 
-                    `select marker_id, distance
+                    `select marker_id, name, address, lat, lng,  distance
                     from markers
                     join (
                     SELECT marker_id as id,
