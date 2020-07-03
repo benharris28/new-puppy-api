@@ -29,6 +29,9 @@ const MapService = {
 
          
     },
+    updateMarker(db, id, update) {
+        
+    }
    
 }
 
